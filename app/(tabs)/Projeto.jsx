@@ -1,7 +1,5 @@
-// app/(tabs)/Projeto.jsx
-// app/(tabs)/Projeto.jsx
 import React from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import TelaDeProduto from '../../components/TelaDeProduto';
 
 export default function Produto({ navigation }) {

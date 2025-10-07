@@ -1,8 +1,8 @@
-import { TextInput, View } from "react-native";
 import { useState } from "react";
+import { TextInput, View } from "react-native";
 import BotaoPrincipal from "./BotaoReutilizavel";
 
-export default function FormularioInterativo({estiloTexto, estiloBotao}) {
+export default function FormularioInterativo({estiloTexto, estiloBotao, textoBotao}) {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
@@ -32,7 +32,7 @@ export default function FormularioInterativo({estiloTexto, estiloBotao}) {
         style={estiloTexto}
         secureTextEntry
       />
-      <BotaoPrincipal titulo="Entrar" onApertar={handleLogin} style={estiloBotao}/>
+      <BotaoPrincipal titulo={textoBotao} onApertar={handleLogin} style={estiloBotao}/>
     </View>
   );
 }

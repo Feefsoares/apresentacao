@@ -7,8 +7,11 @@ export default function Explore({ navigation }) {
   const [senha, setSenha] = useState('');  
   
   const handleLogin = () => {
-    navigation.navigate('Index');
+    navigation.navigate('Home');
     alert(`Nome: ${nome}\nEmail: ${email}\nSenha: ${senha}`);
+  };
+  const goToLogin = () => {
+    navigation.navigate('Login');
   };
   return (
     <View style={styles.container}>
@@ -19,7 +22,10 @@ export default function Explore({ navigation }) {
       <Login campo="Senha" tipo="password" setter={setSenha}/>
 
       <TouchableOpacity style={styles.botao} onPress={handleLogin}>
-        <Text style={styles.textoBotao}>Login</Text>
+        <Text style={styles.textoBotao}>Criar</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={goToLogin}>
+        <Text>Já possui uma conta? Clique para entrar!</Text>
       </TouchableOpacity>
     </View>
   );

@@ -1,12 +1,50 @@
-import { StyleSheet, View } from 'react-native';
-import FormularioInterativo from '../../components/FormularioInterativo';
+import { useState } from "react";
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-export default function Login(){
-    return(
-        <View style={styles.container}>
-            <FormularioInterativo estiloBotao={styles.botao} estiloTexto={styles.input}/>
-        </View>
-    );
+export default function Explore({ navigation }) {
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');  
+  
+  const handleLogin = () => {
+    navigation.navigate('Home');
+    alert(`Email: ${email}\nSenha: ${senha}`);
+  };
+  const goToCreate = () => {
+    navigation.navigate('Criar Conta');
+  };
+  return (
+    <View style={styles.container}>
+      <Image source={require('../../assets/images/indieGo-icon-branco.png')}
+      style = {{ width: 150, height: 116, alignSelf: 'center' }}/>
+      <Login campo="Email" tipo="email-address" setter={setEmail}/>
+      <Login campo="Senha" tipo="password" setter={setSenha}/>
+
+      <TouchableOpacity style={styles.botao} onPress={handleLogin}>
+        <Text style={styles.textoBotao}>Login</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={goToCreate}>
+        <Text>Não possui uma conta? Crie uma!</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+function Login({ campo, tipo, setter }) {
+
+  return (
+    <View style={styles.campoContainer}>
+    
+
+
+      <Text style={styles.label}>{campo}</Text>
+      <TextInput
+        style={styles.input}
+        secureTextEntry={tipo === 'password'}
+        keyboardType={tipo === 'email-address' ? 'email-address' : 'default'}
+        onChangeText={setter}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -30,7 +68,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'indigo',
     borderRadius: 8,
     padding: 10,
-    margin: 10,
     fontSize: 16,
   },
   botao: {
